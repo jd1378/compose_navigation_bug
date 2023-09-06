@@ -1,5 +1,7 @@
 package io.github.jd1378.compose_navigation_bug.ui.screens
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,6 +29,26 @@ fun NavGraphBuilder.addHomeGraph(
 ) {
   composable(
       MainDestinations.HOME_ROUTE,
+      exitTransition = {
+          slideOutOfContainer(
+              AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(700)
+          )
+      },
+      enterTransition = {
+          slideIntoContainer(
+              AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(700)
+          )
+      },
+      popExitTransition = {
+          slideOutOfContainer(
+              AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(700)
+          )
+      },
+      popEnterTransition = {
+          slideIntoContainer(
+              AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(700)
+          )
+      }
   ) {
     Home(onNavigateToRoute, modifier)
   }
