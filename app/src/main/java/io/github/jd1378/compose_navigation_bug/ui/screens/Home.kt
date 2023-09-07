@@ -58,9 +58,11 @@ fun NavGraphBuilder.addHomeGraph(
 @Composable
 fun Home(onNavigateToRoute: (String) -> Unit, modifier: Modifier) {
   Scaffold(modifier = modifier) { padding ->
-    Column(modifier.padding(padding).fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.fillMaxSize().padding(padding),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
       Button(onClick = { onNavigateToRoute(MainDestinations.ABOUT_ROUTE) }) {
-        Text(stringResource(R.string.about))
+        Text(text = stringResource(R.string.about))
      }
     }
   }
